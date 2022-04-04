@@ -3,16 +3,24 @@ const DEATH_HEALTH = 0
 
 const INITIAL_LEVEL = 1
 
-function create_character() {
-    return {
-        health: MAX_HEALTH,
-        level: INITIAL_LEVEL,
-        factions: [], 
+class Character {
+    constructor() {
+        this.health= MAX_HEALTH
+        this.level= INITIAL_LEVEL
+        this.factions= []
+    }
+
+    is_alive() {
+        return this.health > DEATH_HEALTH
     }
 }
 
+function create_character() {
+    return new Character()
+}
+
 function is_alive(character) {
-    return character.health > DEATH_HEALTH
+    return character.is_alive()
 }
 
 function damage_character(character, damage) {
